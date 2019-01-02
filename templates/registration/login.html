@@ -1,0 +1,32 @@
+
+{% extends 'registration/reg_base.html' %}
+{% load static  %}
+
+
+ {% block title %}
+      login
+ {% endblock title %}
+
+{% block content %}
+
+ <center><h1 id="mc" >Sign in to Zulfiqar</h1></center>
+   <form method="post" id="log_form" >
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br>
+
+    <input type="submit"  id="lsub" value="submit"  class="btn btn-primary">
+
+    <center>
+
+    <p class="ping" style="margin-top: 20px;"> Don't have account <a href="/reg/">signup</a></p>
+
+
+
+    <p class="ping" style="margin-top: 20px;"><a href="/forgot/">Forgot password</a></p>
+
+    </center>
+</form>
+
+
+{% endblock content %}

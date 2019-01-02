@@ -1,0 +1,179 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %}
+
+   {{ title }}
+
+{% endblock title %}
+
+
+{% block nav %}
+
+    {% for x in page_list %}
+        <li>
+        <a href="{{ x.permalink }}"> {{ x.title }}</a>
+        </li>
+    {% endfor %}
+
+{% endblock nav %}
+
+
+
+{% block content %}
+
+     <div class="container" style="margin-top: 80px;">
+   <div class="row" >
+
+   <div class="col-md-offset-3 col-md-6">
+
+        <center><h1 style="color: darkcyan">Ready to help,<br>wherever you are.</h1>
+        <h2>Use our latest app to detect the viruses and pest</h2></center>
+   </div>
+
+  </div>
+
+
+  </div>
+
+    <div class="container">
+     <div class="row">
+         <center>
+          <img  src="{% static 'gallery/pesto.png' %}" class="img-responsive">
+        </center>
+     </div>
+    </div>
+
+     <div class="container" style="margin-top: 80px;">
+   <div class="row" >
+
+   <div class="col-md-offset-3 col-md-6">
+
+        <center><h1 id="mc"><font color="blue">Z</font><font color="red">ul</font><font color="#FFA22D">fi</font><font color="blue">q</font><font color="green">a</font><font color="red">r</font></h1></center>
+        <center><h1 style="font-size: 40px;">Discover what your<br>Zulfiqar Assistant can do.</h1></center>
+        <center><p>Learn more about how you can get help from your Assistant. And how to open and use Zulfiqar Assistant.</p></center>
+   </div>
+
+  </div>
+
+
+  </div>
+
+<div class="container" style="margin-top: 100px;" >
+   <div class="row" >
+
+         <div class="col-md-1">
+          <button  id='btnscroll' class="w3-button w3-display-left" onclick="plusDivs(-1)" style="margin-top: 280px">&#10094;</button>
+        </div>
+
+      <div class="col-md-10">
+      <div id="scrollimage">
+
+          <img class="mySlides" src="{% static 'serviceimages/play.png' %}" class="img-responsive">
+          <img class="mySlides" src="{% static 'serviceimages/dail.png' %}" class="img-responsive">
+          <img class="mySlides" src="{% static 'serviceimages/message.png' %}" class="img-responsive">
+          <img class="mySlides" src="{% static 'serviceimages/navigate.png' %}" class="img-responsive">
+
+
+      </div>
+
+      </div>
+       <div class="col-md-1">
+          <button id='btnscroll'  class="w3-button w3-display-right" onclick="plusDivs(+1)" style="margin-top: 280px">&#10095;</button>
+      </div>
+
+
+  </div>
+
+
+</div>
+
+
+     <div class="container" style="margin-top: 80px;">
+   <div class="row" >
+
+   <div class="col-md-offset-3 col-md-6">
+
+        <center><h1 style="color: darkcyan">Take selfies faster<br>wherever you are.</h1>
+        <h2>Use our latest app to take selfies faster</h2></center>
+   </div>
+
+  </div>
+
+
+  </div>
+
+      <div class="container" style="margin-top: 80px;">
+   <div class="row" >
+
+        <center>
+          <img  src="{% static 'gallery/selfie.png' %}" class="img-responsive">
+        </center>
+
+  </div>
+
+
+  </div>
+
+    <div class="col-md-offset-3 col-md-6">
+
+        <center><h1 style="color: darkcyan">work faster<br>wherever you are.</h1>
+        <h2>Use our latest app to make your work faster</h2></center>
+   </div>
+
+  </div>
+
+
+  </div>
+
+      <div class="container" style="margin-top: 80px;">
+   <div class="row" >
+
+        <center>
+          <img  src="{% static 'gallery/work.png' %}" class="img-responsive">
+        </center>
+
+  </div>
+
+
+  </div>
+
+
+
+{% endblock content %}
+
+
+{% block update %}
+
+    <center>
+
+<p style="margin-top: 50px">
+ <font color="#d3d3d3"> Page last updated: {{ last_updated|date:'D d F Y' }} </font>
+</p>
+    </center>
+
+{% endblock update %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

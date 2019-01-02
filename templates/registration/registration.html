@@ -1,0 +1,23 @@
+
+{% extends 'registration/reg_base.html' %}
+{% load static  %}
+
+
+ {% block title %}
+      registration
+ {% endblock title %}
+
+{% block content %}
+
+ <center><h1 id="mcr" >Sign up to Zulfiqar</h1></center>
+   <form method="post" id="reg_form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br>
+
+    <input type="submit"  id="lsub" value="submit"  class="btn btn-primary">
+
+</form>
+
+
+{% endblock content %}

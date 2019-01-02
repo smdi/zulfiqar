@@ -1,0 +1,126 @@
+{% load static  %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        registration
+        {% endblock title %}
+    </title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<style>
+
+    label{
+        visibility: hidden;
+        display: none;
+    }
+
+    .bg {
+
+    background-image: url("{%   static 'images/exclll_login.png' %}");
+     height: 100%;
+     background-position: center;
+     background-repeat: no-repeat;
+     background-size: cover;
+
+  }
+
+    #mcr{
+        margin-left: 18px;
+        font-size: 25px;
+        color: white;
+    }
+
+ #mc{
+        margin-top: 2%;
+        font-size: 25px;
+        color: white;
+    }
+
+    #log_form{
+        padding-top: 60px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        height: 320px;
+        width: 300px;
+        margin-left: 80px;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+    #reg_form{
+
+         padding-left: 20px;
+        padding-right: 20px;
+         padding-top: 22px;
+         height: 330px;
+        width: 300px;
+        margin-left: 80px;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+
+    p{
+        color: black;
+    }
+
+    #lsub{
+
+        width: 100%;
+    }
+    #ch{
+        margin-top: 50px;
+        margin-left: 35px;
+        font-size: 50px;
+        color: black;
+        display: inline-block;
+    }
+    #tc{
+        color: black;
+        display: inline-block;
+    }
+
+</style>
+
+</head>
+<body  class="bg"  >
+
+<h1 id="ch"><font color="blue">Z</font><font color="red">ul</font><font color="#FFA22D">fi</font><font color="blue">q</font><font color="green">a</font><font color="red">r</font></h1>&emsp;&emsp;&emsp;&emsp;&emsp;<h3 id="tc" style="color: gray">Technology company</h3>
+<div class="container">
+<div class="row">
+
+    <div class="col-md-7">
+
+     <h1 style="font-size: 40px;margin-left: 50px;margin-top: 17%;color:gray">
+
+{#               "Our mission is to organise the world’s information and make it#}
+{#                universally accessible and useful."#}
+
+          "Our mission is to <font color="blue">organise</font> the world’s<font color="red"> information</font> and make it
+            <font color="green">universally accessible</font> and <font color="#FFA22D">useful."</font>
+
+
+            </h1>
+
+    </div>
+   <div class="col-md-5">
+
+       {% block content %}
+
+       {% endblock content %}
+
+</div>
+</div>
+</div>
+</body>
+</html>

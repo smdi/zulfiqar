@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>
+
+
+      {% block title %}
+
+          Zulfiqar
+
+      {% endblock title %}
+
+
+  </title>
+
+  <link href="{% static 'main.css' %}" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{% static 'main.js' %}"></script>
+
+    {#  <meta charset="utf-8">#}
+{#  <meta name="viewport" content="width=device-width, initial-scale=1">#}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body onLoad="plusDivs(-1);">
+
+<header >
+
+
+    <ul class="hulist" style="background-color: lightgray;width: 100%">
+        <li style="display: inline-block;"><h1>Zulfiqar</h1></li>&emsp;&emsp;&emsp;&emsp;&emsp;
+         {% block nav %}
+             <li>Menu 1</li><li>Menu 2</li><li>Menu 3</li>
+         {% endblock nav %}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <li><h3>Welcome,{{ user.username }}</h3></li>
+        <li style="display: inline-block;" ><a href="/logout">Logout</a></li>
+    </ul>
+
+</header>
+<br><br><br><br>
+
+{% block content %}
+
+ <h1> Hello , welcome to zulfiqar  </h1>
+
+{% endblock content %}
+
+
+<footer>
+
+    {% block update %}
+    {% endblock update %}
+
+</footer>
+
+</body>
+</html>
