@@ -23,7 +23,6 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = [
 
     url(r'^$', views.loginview , name='login'),
-    # url(r'^login/', views.loginview),
     url(r'^admin/', admin.site.urls),
     url(r'^reg/', views.registrationview),
     url(r'^logout/', views.logout),

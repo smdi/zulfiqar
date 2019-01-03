@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 def checker(hash, pasw):
     c = 0
     for x in range(len(hash)) :
-        p =  hash[0]['password1']
+        p =  hash[c]['password1']
         if check_password_hash(p, pasw) :
             break
             return True

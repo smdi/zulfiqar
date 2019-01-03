@@ -141,10 +141,10 @@ STATIC_URL = '/static/'
 #
 # ]
 #
-# from django.core.urlresolvers import reverse_lazy
-# LOGIN_URL = reverse_lazy('login')
+from django.core.urlresolvers import reverse_lazy
+LOGIN_URL = reverse_lazy('login')
 #
-# LOGIN_REDIRECT_URL = '/home'
+LOGIN_REDIRECT_URL = '/home'
 
 
 

@@ -25,16 +25,13 @@ def forgotPassword(request):
             if password1 == password2 :
                 print('password matched')
                 user = RegistrationData.objects.filter(username=username)
-                user.update(password1 = password1)
-                user.update(password2 = password2)
+                user.update(password1 = hasher(password1))
+                user.update(password2 = hasher(password2))
                 print('password updated')
             return redirect('/')
     else:
         form = ForgotPasswordForm()
         return render(request, 'registration/forgot_password.html', {'form': form})
-
-
-
 
 def registrationview(request):
     if request.method == 'POST' :
@@ -48,8 +45,8 @@ def registrationview(request):
             # dob = RegistrationForm.cleaned_data.get('dob','')
             data = RegistrationData(
                 username=username,
-                password1=password1,
-                password2=password2,
+                password1=hasher(password1),
+                password2=hasher(password2),
                 email=email,
                 mobile = mobile ,
                 # dob = dob
@@ -66,8 +63,6 @@ def registrationview(request):
         rform = RegistrationForm()
     return render(request, 'registration/registration.html', {'form': rform})
 
-
-
 def loginview(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -76,22 +71,21 @@ def loginview(request):
             password = request.POST.get('password', '')
 
             un = RegistrationData.objects.filter(username=username)
-            pv = RegistrationData.objects.filter(password1=password)
             print(un)
             hash = RegistrationData.objects.values('password1')
             print(hash)
-            print('username')
+            print('username',un)
             user = auth.authenticate(username=username, password=password)
             print('auth in django',user)
-            if un is not None:
-                    if pv is not None:
-                        print('password')
-                        request.session['username'] = username
-                        auth.login(request,user)
-                        return redirect('/home/')
-                    else:
-                        print('wrong password')
-                        return redirect('/')
+            if  un:
+                if checker(hash ,password) is  None:
+                    print('password')
+                    request.session['username'] = username
+                    auth.login(request,user)
+                    return redirect('/home/')
+                else:
+                    print('wrong password')
+                    return redirect('/')
             else:
                 print('wrong username')
                 return redirect('/')
@@ -104,10 +98,8 @@ def loginview(request):
 
 
 
-
-
-# @smartlogin
-@login_required(login_url=reverse_lazy('login'))
+@smartlogin
+@login_required()
 def home(request):
     pagename = 'home'
     catch = linkdispatcher(pagename)
@@ -115,15 +107,15 @@ def home(request):
 
 
 
-# @smartlogin
-@login_required(login_url=reverse_lazy('login'))
+@smartlogin
+@login_required()
 def services(request):
     pagename = 'services'
     catch = linkdispatcher(pagename)
     return render(request, catch[0] ,context=catch[1])
 
-# @smartlogin
-@login_required(login_url=reverse_lazy('login'))
+@smartlogin
+@login_required()
 def contacts(request):
     pagename = 'contacts'
     submitted = False
@@ -162,10 +154,8 @@ def contacts(request):
 
 
 
-
-
-# @smartlogin
-@login_required(login_url=reverse_lazy('login'))
+@smartlogin
+@login_required()
 def feedbacks(request):
     pagename = 'feedback'
     submitted = False
@@ -202,8 +192,8 @@ def feedbacks(request):
         return render(request, catch[0], context=cont)
     return render(request, catch[0], context=cont)
 
-# @smartlogin
-@login_required(login_url=reverse_lazy('login'))
+@smartlogin
+@login_required()
 def gallery(request):
     pagename = 'gallery'
     catch = linkdispatcher(pagename)
@@ -213,11 +203,12 @@ def gallery(request):
 def logout(request):
 
     try :
+        auth.logout(request)
         print('trying to delete session data' ,request.session.get('username'))
         del request.session['username']
         print('data deleted')
         print('auth logging out')
-        auth.logout(request)
+
 
     except :
         print('unable to delete')
