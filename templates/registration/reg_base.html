@@ -18,6 +18,43 @@
 
 <style>
 
+    #org{
+
+        animation-name: blue_to_red;
+        animation-duration: 12s;
+        animation-iteration-count: infinite;
+    }
+    #inf{
+        animation-name: red_to_blue;
+        animation-duration: 12s;
+        animation-iteration-count: infinite;
+    }
+    #univ{
+        animation-name: green_to_yellow;
+        animation-duration: 12s;
+        animation-iteration-count: infinite;
+    }
+    #use{
+        animation-name: yellow_to_green;
+        animation-duration: 12s;
+        animation-iteration-count: infinite;
+    }
+    @keyframes blue_to_red {
+    from {color: blue;}
+    to {color: red;}
+    }
+    @keyframes red_to_blue {
+    from {color: red;}
+    to {color: blue;}
+    }
+    @keyframes green_to_yellow {
+    from {color: green;}
+    to {color: #FFA22D;}
+    }
+    @keyframes yellow_to_green {
+    from {color: #FFA22D;}
+    to {color: green;}
+    }
     label{
         visibility: hidden;
         display: none;
@@ -95,6 +132,8 @@
 </head>
 <body  class="bg"  >
 
+
+
 <h1 id="ch"><font color="blue">Z</font><font color="red">ul</font><font color="#FFA22D">fi</font><font color="blue">q</font><font color="green">a</font><font color="red">r</font></h1>&emsp;&emsp;&emsp;&emsp;&emsp;<h3 id="tc" style="color: gray">Technology company</h3>
 <div class="container">
 <div class="row">
@@ -106,11 +145,15 @@
 {#               "Our mission is to organise the world’s information and make it#}
 {#                universally accessible and useful."#}
 
-          "Our mission is to <font color="blue">organise</font> the world’s<font color="red"> information</font> and make it
-            <font color="green">universally accessible</font> and <font color="#FFA22D">useful."</font>
+          "Our mission is to <font color="blue" id="org">organise</font> the world’s<font color="red" id="inf"> information</font> and make it
+            <font color="green" id="univ">universally accessible</font> and <font color="#FFA22D" id="use">useful."</font>
 
 
             </h1>
+
+
+
+
 
     </div>
    <div class="col-md-5">

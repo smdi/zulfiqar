@@ -1,7 +1,9 @@
 from django import forms
 from multiselectfield import MultiSelectFormField
 from .porter import  *
+from .models import RegistrationData
 from django.forms.widgets import SelectDateWidget
+from django.core import validators
 
 class RegistrationForm(forms.Form):
 
@@ -97,6 +99,7 @@ class LoginForm(forms.Form):
 
         )
 
+
     )
     password = forms.CharField(
 
@@ -110,6 +113,15 @@ class LoginForm(forms.Form):
             }
         )
     )
+    def clean_username(self):
+        print('cleaned data',self.cleaned_data)
+        username = self.cleaned_data.get('username')
+
+        if username is  None :
+             print('username error')
+             raise forms.ValidationError('check ur username')
+        return username
+
 
 
 

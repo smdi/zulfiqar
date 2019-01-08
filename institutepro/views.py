@@ -66,7 +66,9 @@ def registrationview(request):
 def loginview(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
+        print('in views')
         if form.is_valid():
+            print('after calling is valid')
             username = request.POST.get('username' ,'')
             password = request.POST.get('password', '')
 
@@ -89,7 +91,7 @@ def loginview(request):
             else:
                 print('wrong username')
                 return redirect('/')
-        # return redirect('/')
+        print('after form is valid')
         form = LoginForm()
         return render(request, 'registration/login.html', {'form': form})
     else:
