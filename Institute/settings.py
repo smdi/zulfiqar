@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'institutepro',
+    'rest_framework',
 ]
 
 MIDDLEWARE_CLASSES = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -132,22 +134,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+
+
 STATIC_URL = '/static/'
 
-#
-#
-# STATICFILES_DIRS = [
-#
-#     os.path.join(BASE_DIR, 'institutepro/static')
-#
-# ]
-#
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'institutepro/static')
+]
+
 from django.core.urlresolvers import reverse_lazy
 LOGIN_URL = reverse_lazy('login')
 #
 LOGIN_REDIRECT_URL = '/home'
-
-
 
 
 

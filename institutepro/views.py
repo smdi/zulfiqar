@@ -9,6 +9,8 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.utils.decorators import method_decorator
 # from  Institute.settings import LOGIN_URL
+from django.http import JsonResponse
+
 
 import datetime
 
@@ -193,6 +195,24 @@ def feedbacks(request):
         cont['submitted'] = submitted
         return render(request, catch[0], context=cont)
     return render(request, catch[0], context=cont)
+
+
+def feedbacks_api(request):
+    feedbacks = FeedbackData.objects.all()
+    data = {"results" : list(feedbacks.values('name','rating','datetime','feedback'))}
+    return JsonResponse(data)
+
+def feedback_specific_api(request ,name):
+    print(name)
+    feedbacks = get_object_or_404(FeedbackData, name=name)
+    data = {"results": {
+        "name": feedbacks.name,
+        "rating": feedbacks.rating,
+        "datatime": feedbacks.datetime,
+        "feedback":feedbacks.feedback
+    }}
+    return JsonResponse(data)
+
 
 @smartlogin
 @login_required()

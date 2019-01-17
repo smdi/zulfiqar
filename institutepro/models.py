@@ -30,7 +30,8 @@ class FeedbackData(models.Model):
     rating = models.IntegerField()
     datetime = models.DateTimeField()
     feedback = models.CharField(max_length=2000)
-
+    def __str__(self):
+        return self.name
 
 
 

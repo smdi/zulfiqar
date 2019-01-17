@@ -15,10 +15,11 @@ Including another URLconf
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 from django.conf.urls import url
+
 from django.contrib import admin
 from institutepro import views
 from django.contrib.auth.decorators import login_required
-
+from institutepro.apiviews import FeedbackList ,FeedbackDeatail , UserCreate
 
 urlpatterns = [
 
@@ -31,5 +32,23 @@ urlpatterns = [
     url(r'^services/',login_required( views.services)),
     url(r'^contacts/', login_required(views.contacts)),
     url(r'^feedback/', login_required(views.feedbacks)),
-    url('^gallery',login_required(views.gallery))
+    url(r'^gallery/',login_required(views.gallery)),
+    url(r'^api/feedback/(?P<name>[A-Za-z]+)$',FeedbackDeatail.as_view()),
+    url(r'^api/feedback/', FeedbackList.as_view()),
+    url(r'^api/users/',UserCreate.as_view())
+
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
