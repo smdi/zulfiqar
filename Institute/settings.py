@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'institutepro',
     'rest_framework',
+    'rest_framework.authtoken'
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -147,6 +149,21 @@ from django.core.urlresolvers import reverse_lazy
 LOGIN_URL = reverse_lazy('login')
 #
 LOGIN_REDIRECT_URL = '/home'
+
+
+REST_FRAMEWORK = {
+
+
+'DEFAULT_AUTHENTICATION_CLASSES': (
+'rest_framework.authentication.TokenAuthentication',
+'rest_framework.authentication.SessionAuthentication',
+) ,
+
+'DEFAULT_PERMISSION_CLASSES': (
+'rest_framework.permissions.IsAuthenticated',
+)
+
+}
 
 
 

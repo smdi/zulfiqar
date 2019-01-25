@@ -19,7 +19,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from institutepro import views
 from django.contrib.auth.decorators import login_required
-from institutepro.apiviews import FeedbackList ,FeedbackDeatail , UserCreate
+from institutepro.apiviews import FeedbackList ,FeedbackDeatail , UserCreate ,LoginView
 
 urlpatterns = [
 
@@ -35,8 +35,8 @@ urlpatterns = [
     url(r'^gallery/',login_required(views.gallery)),
     url(r'^api/feedback/(?P<name>[A-Za-z]+)$',FeedbackDeatail.as_view()),
     url(r'^api/feedback/', FeedbackList.as_view()),
-    url(r'^api/users/',UserCreate.as_view())
-
+    url(r'^api/users/',UserCreate.as_view()),
+    url(r'^api/login/',LoginView.as_view()),
 ]
 
 

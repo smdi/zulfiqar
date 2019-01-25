@@ -11,7 +11,7 @@ class RegistrationData(models.Model):
     mobile  = models.BigIntegerField()
     # dob =models.DateField()
     def __str__(self):
-        return self.password1
+        return self.username
 
 
 
