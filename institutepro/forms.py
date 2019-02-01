@@ -82,12 +82,15 @@ class RegistrationForm(forms.Form):
         )
     )
 
-
+def check_users(value):
+    if value[0].lower() != 'd':
+        print('must start with d')
+        raise forms.ValidationError('must start with d')
 
 
 class LoginForm(forms.Form):
 
-    username = forms.CharField(
+    username = forms.CharField( validators = [check_users] ,
         # label='username',
         widget=forms.TextInput(
 
@@ -98,6 +101,7 @@ class LoginForm(forms.Form):
             }
 
         )
+
 
 
     )
@@ -111,13 +115,13 @@ class LoginForm(forms.Form):
                 'placeholder': 'enter password'
 
             }
-        )
+        ),
+
     )
     def clean_username(self):
-        print('cleaned data',self.cleaned_data)
-        username = self.cleaned_data.get('username')
-
-        if username is  None :
+        username = self.cleaned_data['username']
+        print('in clean username '+username)
+        if len(username) <=0 :
              print('username error')
              raise forms.ValidationError('check ur username')
         return username
@@ -256,23 +260,3 @@ class FeedbackForm(forms.Form):
             }
         )
     )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
